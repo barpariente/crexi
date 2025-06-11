@@ -2,10 +2,13 @@
     "include": ["index.ts", "./src"],
     "compilerOptions": {
         "target": "es2022",
-        "lib": ["es2022"],
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "lib": ["es2022", "DOM"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
         "outDir": "./dist",
-        "sourceMap": true
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "allowImportingTsExtensions": true,
+        "noEmit": true
     }
 }
