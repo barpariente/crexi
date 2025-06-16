@@ -1,6 +1,6 @@
 import { CrexiProperty, MontoProperty } from "./types";
 import { PORTAL_NAME, ROOT_URL } from './constants';
-import { mapMontoProperty, searchCrexiProperties } from './utils';
+import { mapMontoProperty, searchCrexiProperties } from './try_utils';
 
 /** Class representing a Crexi scraper. */
 export class CrexiScraper {
@@ -14,9 +14,9 @@ export class CrexiScraper {
 
     async scrape(placeId: string): Promise<MontoProperty[]> {
         console.info(`${this.#name} scraper started.`);
-        let properties = [];
+        // let properties = [];
 
-        properties = await searchCrexiProperties(this.#rootUrl, placeId);
+        const properties = await searchCrexiProperties(this.#rootUrl, placeId);
         
 
         console.info(`${this.#name} scraper ended.`);

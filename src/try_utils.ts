@@ -1,42 +1,63 @@
 import { off } from "process";
 import { CrexiProperty, MontoProperty } from "./types";
-import {ENTRIES_PER_PAGE} from "./constants";
-import { STATES_DATABASE } from "./States Database";
-import { calculateViewport } from "./Viewport Calculation";
-
+import {ENTRIES_PER_PAGE, TIME_BETWEEN_REQUESTS} from "./constants";
 /**
  * Search Crexi properties by Google Place ID.
  */
 export async function searchCrexiProperties(
+  rootUrl: string,
+  placeId: string,
+  page: number = 1
+): Promise<CrexiProperty[]> {
+  let Allproperties: CrexiProperty[] = [];
+  
+  let hasMore = true;
+  let sumPages = 0;
+  while (hasMore) {
+    const properties = await searchAllCrexiProperties(rootUrl, placeId, page);
+    Allproperties.push(...properties);
+    console.log(`Fetched page ${page} with ${properties.length} items`);
+    sumPages += properties.length;
+    
+    if (sumPages >= 1500) {
+      console.log("Reached 1500 properties, stopping.");
+      break;
+    }
+    /** asking Ibrahim
+     if (properties.length < ENTRIES_PER_PAGE) {
+       console.log("Reached last page, stopping.");
+       break;
+     }
+     if (properties.length === 0) {
+       console.log("No more properties found, stopping.");
+       break;
+     }
+     * 
+     */
+
+    page++;
+    await new Promise(resolve => setTimeout(resolve, TIME_BETWEEN_REQUESTS));
+  }
+  return Allproperties;
+}
+
+export async function searchAllCrexiProperties(
     rootUrl: string,
     placeId: string,
     page: number = 1
   ): Promise<CrexiProperty[]> {
     
-    const offset = 0 + (page - 1) * 500; 
-    
-    const metadata = STATES_DATABASE.find(state => state.placeId === placeId);
-
-    if (!metadata) {
-      throw new Error(`State metadata not found for placeId: ${placeId}`);
-    }
-    const polygons = metadata.polygons;
+    const offset = 0 + (page - 1) * ENTRIES_PER_PAGE; 
     
     // Body of the request
     const body = {
-      "locations": [
-            {
-              "placeId": metadata.placeId,
-              "type": "city",
-              "stateCode": metadata.code,
-              "location": {
-                "latitude": metadata.lat,
-                "longitude": metadata.lng
-                },
-              "viewport": calculateViewport(metadata.lat, metadata.lng),
-              "polygons": metadata.polygons
-            }
-        ],
+      locations: [
+        {
+        placeId: `${placeId}`,
+        type: "stateCode",
+        // stateCode: "",
+        },
+      ],
       count: ENTRIES_PER_PAGE, // maximun return of the API 
       mlScenario: "Recombee-Recommendations",
       offset: offset,
@@ -78,8 +99,8 @@ export async function searchCrexiProperties(
   // const data = jsonData.data;
   
   //properties print test 
-  console.log(properties);
-  console.log(properties[0].locations);
+  //console.log(properties);
+  //console.log(properties[0].locations);
 
   return properties;
 }
