@@ -1,0 +1,290 @@
+[
+    {
+        "id": "prop_001",
+        "name": "Luxury Downtown Apartment",
+        "price": 450000,
+        "types": [
+            "apartment",
+            "luxury"
+        ],
+        "location": "Downtown Seattle",
+        "stateCode": "WA",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00",
+        "createdAt": "2024-01-15T10:30:00.000Z"
+    },
+    {
+        "id": "prop_002",
+        "name": "Suburban Family Home",
+        "price": 325000,
+        "types": [
+            "house",
+            "family"
+        ],
+        "location": "Bellevue",
+        "stateCode": "WA",
+        "status": "pending",
+        "imageUrl": "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+        "createdAt": "2024-01-12T14:20:00.000Z"
+    },
+    {
+        "id": "prop_003",
+        "name": "Modern Condo with City View",
+        "price": 580000,
+        "types": [
+            "condo",
+            "modern"
+        ],
+        "location": "San Francisco",
+        "stateCode": "CA",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+        "createdAt": "2024-01-10T09:15:00.000Z"
+    },
+    {
+        "id": "prop_004",
+        "name": "Cozy Studio Apartment",
+        "price": 280000,
+        "types": [
+            "apartment",
+            "studio"
+        ],
+        "location": "Portland",
+        "stateCode": "OR",
+        "status": "sold",
+        "imageUrl": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
+        "createdAt": "2024-01-08T16:45:00.000Z"
+    },
+    {
+        "id": "prop_005",
+        "name": "Waterfront Villa",
+        "price": 1200000,
+        "types": [
+            "villa",
+            "waterfront",
+            "luxury"
+        ],
+        "location": "Miami Beach",
+        "stateCode": "FL",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1613490493576-7fde63acd811",
+        "createdAt": "2024-01-05T11:30:00.000Z"
+    },
+    {
+        "id": "prop_006",
+        "name": "Historic Brownstone",
+        "price": 750000,
+        "types": [
+            "house",
+            "historic"
+        ],
+        "location": "Brooklyn",
+        "stateCode": "NY",
+        "status": "pending",
+        "imageUrl": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
+        "createdAt": "2024-01-03T13:20:00.000Z"
+    },
+    {
+        "id": "prop_007",
+        "name": "Mountain Cabin Retreat",
+        "price": 395000,
+        "types": [
+            "cabin",
+            "retreat"
+        ],
+        "location": "Aspen",
+        "stateCode": "CO",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000",
+        "createdAt": "2023-12-28T08:15:00.000Z"
+    },
+    {
+        "id": "prop_008",
+        "name": "Downtown Loft Space",
+        "price": 520000,
+        "types": [
+            "loft",
+            "urban"
+        ],
+        "location": "Chicago",
+        "stateCode": "IL",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+        "createdAt": "2023-12-25T15:40:00.000Z"
+    },
+    {
+        "id": "prop_009",
+        "name": "Beachside Bungalow",
+        "price": 680000,
+        "types": [
+            "bungalow",
+            "beachside"
+        ],
+        "location": "Santa Monica",
+        "stateCode": "CA",
+        "status": "sold",
+        "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+        "createdAt": "2023-12-22T10:25:00.000Z"
+    },
+    {
+        "id": "prop_010",
+        "name": "Ranch Style Home",
+        "price": 410000,
+        "types": [
+            "house",
+            "ranch"
+        ],
+        "location": "Austin",
+        "stateCode": "TX",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+        "createdAt": "2023-12-20T12:10:00.000Z"
+    },
+    {
+        "id": "prop_011",
+        "name": "High-Rise Penthouse",
+        "price": 1500000,
+        "types": [
+            "penthouse",
+            "luxury",
+            "high-rise"
+        ],
+        "location": "Manhattan",
+        "stateCode": "NY",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+        "createdAt": "2023-12-18T14:35:00.000Z"
+    },
+    {
+        "id": "prop_012",
+        "name": "Suburban Townhouse",
+        "price": 365000,
+        "types": [
+            "townhouse",
+            "suburban"
+        ],
+        "location": "Arlington",
+        "stateCode": "VA",
+        "status": "pending",
+        "imageUrl": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+        "createdAt": "2023-12-15T09:50:00.000Z"
+    },
+    {
+        "id": "prop_013",
+        "name": "Industrial Loft Conversion",
+        "price": 475000,
+        "types": [
+            "loft",
+            "industrial",
+            "converted"
+        ],
+        "location": "Detroit",
+        "stateCode": "MI",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+        "createdAt": "2023-12-12T16:20:00.000Z"
+    },
+    {
+        "id": "prop_014",
+        "name": "Garden View Apartment",
+        "price": 340000,
+        "types": [
+            "apartment",
+            "garden-view"
+        ],
+        "location": "Savannah",
+        "stateCode": "GA",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        "createdAt": "2023-12-10T11:45:00.000Z"
+    },
+    {
+        "id": "prop_015",
+        "name": "Contemporary Glass House",
+        "price": 890000,
+        "types": [
+            "house",
+            "contemporary",
+            "glass"
+        ],
+        "location": "Phoenix",
+        "stateCode": "AZ",
+        "status": "sold",
+        "imageUrl": "https://images.unsplash.com/photo-1600566753051-e7162c5c64e2",
+        "createdAt": "2023-12-08T13:15:00.000Z"
+    },
+    {
+        "id": "prop_016",
+        "name": "Victorian Era Home",
+        "price": 625000,
+        "types": [
+            "house",
+            "victorian",
+            "historic"
+        ],
+        "location": "San Francisco",
+        "stateCode": "CA",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600566752734-21e548d54892",
+        "createdAt": "2023-12-05T08:30:00.000Z"
+    },
+    {
+        "id": "prop_017",
+        "name": "Lakefront Cottage",
+        "price": 450000,
+        "types": [
+            "cottage",
+            "lakefront"
+        ],
+        "location": "Lake Tahoe",
+        "stateCode": "CA",
+        "status": "pending",
+        "imageUrl": "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        "createdAt": "2023-12-03T15:25:00.000Z"
+    },
+    {
+        "id": "prop_018",
+        "name": "Urban Studio Loft",
+        "price": 315000,
+        "types": [
+            "studio",
+            "loft",
+            "urban"
+        ],
+        "location": "Nashville",
+        "stateCode": "TN",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea",
+        "createdAt": "2023-12-01T10:40:00.000Z"
+    },
+    {
+        "id": "prop_019",
+        "name": "Mediterranean Villa",
+        "price": 1100000,
+        "types": [
+            "villa",
+            "mediterranean",
+            "luxury"
+        ],
+        "location": "Santa Barbara",
+        "stateCode": "CA",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600566752229-450c2c0d54af",
+        "createdAt": "2023-11-28T12:55:00.000Z"
+    },
+    {
+        "id": "prop_020",
+        "name": "Eco-Friendly Smart Home",
+        "price": 545000,
+        "types": [
+            "house",
+            "eco-friendly",
+            "smart-home"
+        ],
+        "location": "Boulder",
+        "stateCode": "CO",
+        "status": "available",
+        "imageUrl": "https://images.unsplash.com/photo-1600566752734-21e548d54892",
+        "createdAt": "2023-11-25T14:10:00.000Z"
+    }
+]

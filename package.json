@@ -5,8 +5,9 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node --enable-source-maps --env-file=.env index.ts"
+  "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node --enable-source-maps --env-file=./task2/.env ./task2/index.ts"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ibrahim-netto/monto-code-test.git"
@@ -21,5 +22,11 @@
     "@types/node": "^22.15.30",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@fastify/mongodb": "^9.0.2",
+    "dotenv": "^16.5.0",
+    "fastify": "^5.4.0",
+    "mongodb": "^6.17.0"
   }
 }
