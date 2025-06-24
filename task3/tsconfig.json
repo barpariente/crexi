@@ -1,0 +1,14 @@
+{
+  "include": ["index.ts"],
+  "compilerOptions": {
+      "target": "es2022",
+      "lib": ["es2022", "DOM"],
+      "module": "ESNext",
+      "moduleResolution": "Bundler",
+      "outDir": "./dist",
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "allowImportingTsExtensions": true,
+      "noEmit": true
+  }
+}

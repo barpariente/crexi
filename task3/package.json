@@ -1,0 +1,32 @@
+{
+  "name": "task3",
+  "version": "1.0.0",
+  "description": "Scraping code test.",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node --enable-source-maps --env-file=./.env ./index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahim-netto/monto-code-test.git"
+  },
+  "author": "Ibrahim Netto <ibrahim@montopay.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ibrahim-netto/monto-code-test/issues"
+  },
+  "homepage": "https://github.com/ibrahim-netto/monto-code-test#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.32",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@fastify/mongodb": "^9.0.2",
+    "ajv": "^8.17.1",
+    "dotenv": "^16.5.0",
+    "fastify": "^5.4.0",
+    "mongodb": "^6.17.0"
+  }
+}
