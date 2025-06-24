@@ -1,3 +1,4 @@
+
 export type MontoProperty = {
     id: string;
     name: string;
@@ -10,37 +11,23 @@ export type MontoProperty = {
     createdAt: Date;
   };
 
-export type MontoFilter = {
-    stateCode?: string, 
-    price?: {
-      gt?: number, 
-      lte?: number, 
-      gte?: number, 
-      lt?: number}, 
-    createdAt?: {
-      gt?: string, 
-      lte?: string, 
-      gte?: string, 
-      lt?: string}
-  };
-
 export type MontoSort = {
   sortBy?: string;
   sortOrder?: string; 
 }
 
 export type MontoQuery = {
-  stateCode?: string, 
-    price?: {
-      gt?: number, 
-      lte?: number, 
-      gte?: number, 
-      lt?: number}, 
-    createdAt?: {
-      gt?: string, 
-      lte?: string, 
-      gte?: string, 
-      lt?: string},
-    sortBy?: string,
-    sortOrder?: string
+  stateCode?: string;
+  'price.gt'?: string;
+  'price.gte'?: string;
+  'price.lt'?: string;
+  'price.lte'?: string;
+  'createdAt.gt'?: string;
+  'createdAt.gte'?: string;
+  'createdAt.lt'?: string;
+  'createdAt.lte'?: string;
+  sortBy?: string;
+  sortOrder?: string;
+  count?: string;
+  offset?: string;
 }
