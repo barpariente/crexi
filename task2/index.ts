@@ -1,9 +1,13 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import fastifyMongoDb, { ObjectId } from '@fastify/mongodb';
 import { DEFAULT_PORT, MONGO_URL } from './src/constants.ts';
-import { filterQuery, sortQuery } from './src/utils.ts';
 import type { MontoProperty, MontoQuery } from './src/types.ts';
-import type { WithId } from 'mongodb';
+import { handlerGet, schemaGet } from '../task3/src/controller.ts';
+import { WithId } from 'mongodb';
+import { filterQuery, sortQuery } from './src/utils.ts';
+import NodeCache from 'node-cache';
+
+const cache = new NodeCache({ stdTTL: 300 });
 
 const fastify = Fastify({
     logger: true
@@ -15,26 +19,26 @@ fastify.register(fastifyMongoDb, {
     url: "mongodb://localhost:27017/monto-code-test" 
 });
 
-fastify.get('/', async (request, reply) => {
-    return { data: "Hello World" };
-});
-
-//get properties with filters and sorting
-// optional : get<{
-//   Querystring: MontoQuery
-// }>
-fastify.get('/properties', async (request, reply) => {
+fastify.get('/', async (
+    request: FastifyRequest<{
+      Querystring: { count?: string }; 
+    }>,
+    reply: FastifyReply
+  ) => {
     if (!fastify.mongo.db) {
         return reply.code(500).send();
     }
-    const { count = '10' } = request.query as { count: string };
-    const { offset = '0' } = request.query as { offset: string };
-
-    //define the query type
-    const query: MontoQuery = request.query as MontoQuery;
+    const { count } = request.query as { count: string };
+    const {offset} = request.query as {offset: string};
     
+    const query: MontoQuery = request.query as MontoQuery;
+    const cacheKey = JSON.stringify(query);
+    const cachedData : WithId<MontoProperty>[] = cache.get(cacheKey);
+    if (cachedData) {
+        return reply.code(200).send({data: cachedData, total: cachedData.length});
+    }
     //get properties from the database
-    const properties: WithId<MontoProperty>[] = await fastify.mongo.db
+    const rawProperties: WithId<MontoProperty>[] = await fastify.mongo.db
         .collection<MontoProperty>('properties')
         .find(filterQuery(query))
         .skip(Number(offset))
@@ -42,13 +46,16 @@ fastify.get('/properties', async (request, reply) => {
         .sort(sortQuery(query))
         .toArray();
 
-   
-    return {
-        data: properties,
-        total: properties.length
-    };
+    const properties = rawProperties.map((doc) => ({
+        ...doc,
+        id: doc._id.toString(),
+        _id: undefined,
+    }));    
+    cache.set(cacheKey, properties, 300);
+    return reply.code(200).send({data: properties, total: properties.length});
 });
 
+//create a new property
 fastify.post('/properties', async (request, reply) => {
     
     if (!fastify.mongo.db) {
@@ -76,23 +83,24 @@ fastify.post('/properties', async (request, reply) => {
 
 });
 
-fastify.put('/properties/:id', async (request, reply) => {
-    const { id } = request.params as { id: string };
-    const property : MontoProperty = request.body as MontoProperty;
-    if (!property) {
-        return reply.code(404).send({
-            message: "Property not found"
-        })
+fastify.put<{
+    Params: { id: string },
+    Body: Partial<MontoProperty>,
+    Reply: { message: string }
+    }>('/properties/:id', async (request, reply) => {
+    //check if the database is connected
+    if (!fastify.mongo.db) {
+        return reply.code(500).send();
     }
+    const { id } = request.params;
+    const property = request.body;
     try {
         const result = await fastify.mongo.db
         .collection<MontoProperty>('properties')
-        .updateOne({ id: id }, { $set: property });
-        if (result.acknowledged) {
-            return reply.code(200).send({
-                message: "Property updated successfully"
-            })
-        }
+        .updateOne({ _id: new ObjectId(id) }, { $set: property });
+        
+        if (result.matchedCount === 0) return reply.code(404).send({ message: "Property not found" });
+        return reply.code(200).send({ message: "Property updated successfully" });
     } catch(error){
         reply.code(400).send({
             message: "Invalid request body/validation errors"
